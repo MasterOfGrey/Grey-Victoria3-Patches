@@ -1,0 +1,16 @@
+{
+  "name" : "TTS Upgrade All Compatch",
+  "id" : "3353474883",
+  "version" : "",
+  "supported_game_version" : "",
+  "short_description" : "",
+  "tags" : [
+        "Fixes",
+        "Warfare",
+        "1.9"
+    ],
+  "relationships" : [],
+  "game_custom_data" : {
+    "multiplayer_synchronized" : true
+  }
+}

@@ -268,6 +268,7 @@ combat_unit_type_man_o_war = {
 
 combat_unit_type_steam_ship_of_the_line = {
 	group = combat_unit_group_capital_ship
+	max_manpower = 1000
 
 	upkeep_modifier = {
 		goods_input_manowars_add = 3

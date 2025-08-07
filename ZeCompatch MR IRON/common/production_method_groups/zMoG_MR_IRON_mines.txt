@@ -1,0 +1,41 @@
+#Uranium Mine
+
+pmg_curie_mining_equipment_building_uranium_mine = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	production_methods = {
+		pm_curie_picks_and_shovels_building_uranium_mine					# Redefined
+		pm_curie_atmospheric_engine_pump_building_uranium_mine
+		pm_curie_condensing_engine_pump_building_uranium_mine
+		pm_curie_improved_condensing_engine_pump_building_uranium_mine		# New
+		pm_curie_ore_conveyor_building_uranium_mine							# New
+		pm_curie_diesel_pump_building_uranium_mine							# Redefined
+	}
+}
+
+pmg_curie_explosives_building_uranium_mine = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	production_methods = {
+		pm_no_explosives
+		pm_curie_nitroglycerin_building_uranium_mine
+		pm_curie_dynamite_building_uranium_mine
+		pm_curie_electro_drills_building_uranium_mine						# New
+	}
+}
+
+# Untouched
+#pmg_curie_steam_automation_building_uranium_mine = {
+#	texture = "gfx/interface/icons/generic_icons/mixed_icon_automation.dds"
+#	production_methods = {
+#		pm_no_steam_automation
+#		pm_steam_donkey_mine
+#	}
+#}
+
+# Untouched
+#pmg_curie_train_automation_building_uranium_mine = {
+#	texture = "gfx/interface/icons/generic_icons/mixed_icon_automation.dds"
+#	production_methods = {
+#		pm_road_carts
+#		pm_rail_transport_mine
+#	}
+#}

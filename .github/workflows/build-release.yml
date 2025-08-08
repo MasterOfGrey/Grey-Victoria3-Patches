@@ -9,6 +9,16 @@ on:
         type: choice
         options:
           - 'ZeCompatch TTS Upgrade All;3353474883'
+          - 'ZeCompatch MR IRON;3543693439'
+      update-description:
+          description: 'Update description?'
+          required: true
+          default: 'true'
+          type: choice
+          options:
+              - 'true'
+              - 'false'
+      
 
 jobs:
   release:
@@ -29,15 +39,27 @@ jobs:
           mv "${{ steps.metadata.outputs.mod-name }}/STEAM_PAGE.bbcode" ../steam-release/STEAM_PAGE.bbcode
           rm -f "${{ steps.metadata.outputs.mod-name }}/vic3-tiger.conf"
           rm -f "${{ steps.metadata.outputs.mod-name }}/design_notes.txt"
-
+        # Use rm -f for files and rm -rf for folders.
+          
         # Create mod metadata for the steam release
         # Uses STEAM_PAGE.bbcode to update steam description
+      - name: Create Workshop Metadata with Description
+        if: ${{ inputs.update-description == 'true' }}
+        shell: bash
+        run: |
+            ./script/create-release-vdf.sh "${{ github.workspace }}/${{ steps.metadata.outputs.mod-name }}" "${{ steps.metadata.outputs.mod-id }}" ../steam-release/STEAM_PAGE.bbcode
+            
+      - name: Create Workshop Metadata without Description
+        if: ${{ inputs.update-description == 'false' }}
+        shell: bash
+        run: |
+            ./script/create-release-vdf.sh "${{ github.workspace }}/${{ steps.metadata.outputs.mod-name }}" "${{ steps.metadata.outputs.mod-id }}"
+            
         # Report: Generated metadata
-      - name: Create Workshop Metadata
+      - name: Process Workshop Metadata
         id: steam-metadata
         shell: bash
         run: |
-          ./script/create-release-vdf.sh "${{ github.workspace }}/${{ steps.metadata.outputs.mod-name }}" ../steam-release/STEAM_PAGE.bbcode "${{ steps.metadata.outputs.mod-id }}"
           mv workshop.vdf ../steam-release/workshop.vdf
           echo "vdf=$(realpath ../steam-release/workshop.vdf)" >> "$GITHUB_OUTPUT"
           echo "# Workflow Metadata" >> $GITHUB_STEP_SUMMARY
@@ -54,4 +76,7 @@ jobs:
         shell: bash
         run: |
           steamcmd +login ${{ secrets.WORKSHOP_USERNAME }} ${{ secrets.WORKSHOP_PASSWORD }} +workshop_build_item ${{ steps.steam-metadata.outputs.vdf }} +quit
+          rm -rf "$STEAM_CMD"
+          rm -rf "$STEAM_DIR"
+          rm -rf "$STEAM_TEMP"
 

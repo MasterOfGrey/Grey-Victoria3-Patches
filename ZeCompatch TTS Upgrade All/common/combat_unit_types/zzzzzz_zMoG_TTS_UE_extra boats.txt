@@ -441,4 +441,215 @@ combat_unit_type_battleship = {
 	}
 }
 
-# No need to touch Submarines or Carriers
+# No need to touch Submarines or Carriers - but included due to compatibility issues
+
+### Raiding Ship group
+
+combat_unit_type_torpedo_boat = {
+	group = combat_unit_group_raiding_ship
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_ironclads_add = 2
+		goods_input_ammunition_add = 1
+		goods_input_coal_add = 1
+	}
+
+	battle_modifier = {
+		unit_offense_add = 22
+		unit_defense_add = 22
+		unit_morale_loss_add = 6
+		unit_naval_armor_add = 1
+		unit_naval_pen_add = 3
+		unit_convoy_raiding_mult = 1
+		unit_is_equipped_with_torpedoes_bool = yes
+		unit_blockade_add = 22
+	}
+
+	unlocking_technologies = { self_propelled_torpedoes }
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/light_ships_torpedo_boat.dds"
+	}
+
+	upgrades = {
+		combat_unit_type_submarine
+	}
+
+	can_build = {
+	}
+}
+
+
+combat_unit_type_submarine = {
+	group = combat_unit_group_raiding_ship
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_ironclads_add = 4
+		goods_input_ammunition_add = 3
+		goods_input_oil_add = 1
+	}
+
+	battle_modifier = {
+		unit_offense_add = 45
+		unit_defense_add = 45
+		unit_morale_loss_add = 4
+		unit_naval_armor_add = 2
+		unit_naval_pen_add = 6
+		unit_convoy_raiding_mult = 1.5
+		unit_is_equipped_with_torpedoes_bool = yes
+		unit_blockade_add = 45
+	}
+
+	unlocking_technologies = { submarine }
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/support_ships_submarine.dds"
+	}
+
+	can_build = {
+	}
+}
+
+### Support (Aviation) Ship group
+
+combat_unit_type_experimental_carrier = {
+	group = combat_unit_group_support_ship
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_ironclads_add = 2
+		goods_input_tts_capital_ships_add = 2
+		goods_input_radios_add = 1
+		goods_input_oil_add = 1
+		goods_input_aeroplanes_add = 2
+	}
+
+	battle_modifier = {
+		unit_offense_add = 60
+		unit_defense_add = 60
+		unit_morale_loss_add = 4
+		unit_naval_armor_add = 6
+		unit_naval_pen_add = 8
+		unit_provides_air_support_bool = yes
+		unit_blockade_add = 60
+	}
+
+	unlocking_technologies = { carrier_tech }
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/support_ships_carrier.dds"
+	}
+
+	can_build = {
+	}
+
+	upgrades = {
+		combat_unit_type_fleet_carrier
+		combat_unit_type_armored_carrier
+	}
+}
+
+combat_unit_type_fleet_carrier = {
+	group = combat_unit_group_support_ship
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_tts_capital_ships_add = 8
+		goods_input_radios_add = 2
+		goods_input_oil_add = 2
+		goods_input_aeroplanes_add = 6
+	}
+
+	battle_modifier = {
+		unit_offense_add = 115
+		unit_defense_add = 115
+		unit_morale_loss_add = 4
+		unit_naval_armor_add = 9
+		unit_naval_pen_add = 10
+		unit_provides_air_support_bool = yes
+		unit_blockade_add = 115
+	}
+
+	unlocking_technologies = { fleet_carrier_tech }
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/tts_fleet_carriers.dds"
+	}
+
+	can_build = {
+	}
+}
+
+combat_unit_type_armored_carrier = {
+	group = combat_unit_group_support_ship
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_tts_capital_ships_add = 8
+		goods_input_radios_add = 2
+		goods_input_oil_add = 2
+		goods_input_aeroplanes_add = 3
+	}
+
+	battle_modifier = {
+		unit_offense_add = 100
+		unit_defense_add = 100
+		unit_morale_loss_add = 3
+		unit_naval_armor_add = 10
+		unit_naval_pen_add = 10
+		unit_provides_air_support_bool = yes
+		unit_blockade_add = 100
+	}
+
+	unlocking_technologies = { armored_carrier_tech }
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/tts_armored_carriers.dds"
+	}
+
+	can_build = {
+	}
+}
+
+# Nix the Monitor
+combat_unit_type_monitor = {
+	# group = combat_unit_group_raiding_ship	# It's less obvious here if this causes issues, but commenting it entirely hides it completely.
+	max_manpower = 1000
+
+	upkeep_modifier = {
+		goods_input_ironclads_add = 1
+		goods_input_artillery_add = 1
+		goods_input_ammunition_add = 1
+	}
+
+	battle_modifier = {
+		unit_offense_add = 20
+		unit_defense_add = 30
+		unit_blockade_add = 20
+		unit_morale_loss_add = 8
+		unit_convoy_defense_mult = 0.20
+	}
+
+	formation_modifier = {
+		military_formation_movement_speed_mult = 0.2
+	}
+
+	combat_unit_image = {
+		texture = "gfx/unit_illustrations/capital_ships_monitor.dds"
+	}
+
+	upgrades = {
+		combat_unit_type_frigate
+		combat_unit_type_screw_frigate
+		combat_unit_type_destroyer
+		combat_unit_type_scout_cruiser
+	}
+	
+	unlocking_technologies = {  }
+	can_build = {
+		always = no
+	}
+}
+

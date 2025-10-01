@@ -1,4 +1,4 @@
-# Uranium mine PM's aligned to IRON pm balance
+﻿# Uranium mine PM's aligned to IRON pm balance
 
 ## Base PMG
 pm_curie_picks_and_shovels_building_uranium_mine = {
